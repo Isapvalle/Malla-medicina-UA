@@ -199,6 +199,8 @@ function aprobarRamo(id) {
 
 function actualizarRamos() {
   const todosLosRamos = Object.values(ramosPorSemestre).flat();
+  let aprobadosCount = 0;
+
   todosLosRamos.forEach(ramo => {
     const div = document.querySelector(`.ramo[data-id='${ramo.id}']`);
     const aprobado = div.classList.contains("aprobado");
@@ -206,6 +208,7 @@ function actualizarRamos() {
       const reqDiv = document.querySelector(`.ramo[data-id='${req}']`);
       return reqDiv.classList.contains("aprobado");
     });
+
     if (!aprobado && requisitosCumplidos) {
       div.classList.add("activo");
       div.style.cursor = "pointer";
@@ -213,6 +216,13 @@ function actualizarRamos() {
       div.classList.remove("activo");
       div.style.cursor = "not-allowed";
     }
+
+    if (aprobado) aprobadosCount++;
+  });
+
+  const progreso = Math.round((aprobadosCount / todosLosRamos.length) * 100);
+  document.getElementById("barra-progreso").style.width = progreso + "%";
+}
   });
 }
 
@@ -244,3 +254,18 @@ function cargarProgreso() {
     if (div) div.classList.add("aprobado");
   });
 }
+
+function alternarModo() {
+  document.body.classList.toggle("oscuro");
+  localStorage.setItem("modoOscuro", document.body.classList.contains("oscuro"));
+}
+
+// Aplica el modo guardado al cargar
+window.onload = () => {
+  cargarMalla();
+  cargarProgreso();
+  if (localStorage.getItem("modoOscuro") === "true") {
+    document.body.classList.add("oscuro");
+  }
+};
+
