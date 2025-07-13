@@ -162,12 +162,9 @@ function crearTitulo(semestre) {
 
   const h2 = document.createElement("h2");
   h2.innerText = semestre;
-  h2.style.marginTop = "30px";
-  h2.style.color = "#fc6998";
-
   bloque.appendChild(h2);
-  malla.appendChild(bloque);
 
+  malla.appendChild(bloque);
   return bloque;
 }
 
@@ -186,6 +183,7 @@ function cargarMalla() {
     const contenedor = crearTitulo(semestre);
     ramos.forEach(ramo => crearRamo(ramo, contenedor));
   }
+  cargarProgreso();
   actualizarRamos();
 }
 
@@ -204,9 +202,10 @@ function actualizarRamos() {
   todosLosRamos.forEach(ramo => {
     const div = document.querySelector(`.ramo[data-id='${ramo.id}']`);
     const aprobado = div.classList.contains("aprobado");
+
     const requisitosCumplidos = ramo.requisitos.every(req => {
       const reqDiv = document.querySelector(`.ramo[data-id='${req}']`);
-      return reqDiv.classList.contains("aprobado");
+      return reqDiv && reqDiv.classList.contains("aprobado");
     });
 
     if (!aprobado && requisitosCumplidos) {
@@ -233,8 +232,7 @@ function reiniciarMalla() {
 }
 
 function guardarProgreso() {
-  const aprobados = Array.from(document.querySelectorAll(".ramo.aprobado"))
-    .map(div => div.dataset.id);
+  const aprobados = Array.from(document.querySelectorAll(".ramo.aprobado")).map(div => div.dataset.id);
   localStorage.setItem("ramosAprobados", JSON.stringify(aprobados));
 }
 
@@ -255,9 +253,7 @@ function alternarModo() {
 
 window.onload = () => {
   cargarMalla();
-  cargarProgreso();
   if (localStorage.getItem("modoOscuro") === "true") {
     document.body.classList.add("oscuro");
   }
-  actualizarRamos();
 };
