@@ -159,13 +159,16 @@ const malla = document.getElementById("malla");
 function crearTitulo(semestre) {
   const bloque = document.createElement("div");
   bloque.classList.add("bloque-semestre");
+
   const h2 = document.createElement("h2");
   h2.innerText = semestre;
   h2.style.marginTop = "30px";
   h2.style.color = "#fc6998";
+
   bloque.appendChild(h2);
   malla.appendChild(bloque);
-  return bloque;
+
+  return bloque; // 👈 lo necesitamos para meter los ramos dentro
 }
 
 function crearRamo(ramo, contenedor) {
@@ -180,9 +183,9 @@ function crearRamo(ramo, contenedor) {
 function cargarMalla() {
   malla.innerHTML = "";
   for (const [semestre, ramos] of Object.entries(ramosPorSemestre)) {
-  const contenedor = crearTitulo(semestre);
-  ramos.forEach(ramo => crearRamo(ramo, contenedor));
-}
+    const contenedor = crearTitulo(semestre); // 💡 ahora devuelve el bloque
+    ramos.forEach(ramo => crearRamo(ramo, contenedor)); // y aquí van los ramos
+  }
   actualizarRamos();
 }
 
