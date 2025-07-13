@@ -34,14 +34,12 @@ h2 {
   margin-top: 30px;
 }
 
-.malla-container {
-  display: flex;
-  flex-wrap: wrap;
-  flex-direction: row;
-  gap: 30px;
-  justify-content: center;
-  align-items: flex-start;
-  margin-top: 30px;
+.bloque-semestre {
+  background-color: #ffffff;
+  border-radius: 16px;
+  padding: 20px;
+  width: 300px;
+  box-shadow: 0 6px 16px rgba(252, 105, 152, 0.15);
 }
 
 .ramo {
