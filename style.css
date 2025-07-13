@@ -26,18 +26,21 @@ h2 {
 
 .malla-container {
   display: flex;
-  flex-direction: column;
-  gap: 20px;
+  flex-direction: row;
+  flex-wrap: wrap;
+  gap: 30px;
+  justify-content: center;
+  align-items: flex-start;
   margin-top: 30px;
 }
 
 .bloque-semestre {
-  background-color: #fff;
+  background-color: #ffffff;
   border-radius: 16px;
   padding: 20px;
-  box-shadow: 0 6px 16px rgba(252, 105, 152, 0.15);
+  width: 300px;
+  box-shadow: 0 6px 16px rgba(252, 105, 152, 0.2);
 }
-
 .ramo {
   background-color: #ffe4ec;
   padding: 15px;
