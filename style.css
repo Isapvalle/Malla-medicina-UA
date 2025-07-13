@@ -132,3 +132,20 @@ body.oscuro #modo-btn {
   color: black;
 }
 
+#barra-progreso-container {
+  width: 100%;
+  background-color: #eee;
+  border-radius: 10px;
+  margin: 10px auto 30px auto;
+  max-width: 500px;
+  height: 16px;
+  overflow: hidden;
+}
+
+#barra-progreso {
+  height: 100%;
+  width: 0%;
+  background-color: #00569D;
+  border-radius: 10px;
+  transition: width 0.5s ease;
+}
