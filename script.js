@@ -157,28 +157,32 @@ const ramosPorSemestre = {
 const malla = document.getElementById("malla");
 
 function crearTitulo(semestre) {
+  const bloque = document.createElement("div");
+  bloque.classList.add("bloque-semestre");
   const h2 = document.createElement("h2");
   h2.innerText = semestre;
   h2.style.marginTop = "30px";
   h2.style.color = "#fc6998";
-  malla.appendChild(h2);
+  bloque.appendChild(h2);
+  malla.appendChild(bloque);
+  return bloque;
 }
 
-function crearRamo(ramo) {
+function crearRamo(ramo, contenedor) {
   const div = document.createElement("div");
   div.classList.add("ramo");
   div.innerText = ramo.nombre;
   div.dataset.id = ramo.id;
   div.onclick = () => aprobarRamo(ramo.id);
-  malla.appendChild(div);
+  contenedor.appendChild(div);
 }
 
 function cargarMalla() {
   malla.innerHTML = "";
   for (const [semestre, ramos] of Object.entries(ramosPorSemestre)) {
-    crearTitulo(semestre);
-    ramos.forEach(ramo => crearRamo(ramo));
-  }
+  const contenedor = crearTitulo(semestre);
+  ramos.forEach(ramo => crearRamo(ramo, contenedor));
+}
   actualizarRamos();
 }
 
