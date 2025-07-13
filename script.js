@@ -194,6 +194,7 @@ function aprobarRamo(id) {
   if (!div.classList.contains("activo")) return;
   div.classList.add("aprobado");
   actualizarRamos();
+  guardarProgreso();
 }
 
 function actualizarRamos() {
@@ -220,6 +221,26 @@ function reiniciarMalla() {
     div.classList.remove("aprobado");
   });
   actualizarRamos();
+  localStorage.removeItem("ramosAprobados");
 }
 
-window.onload = cargarMalla;
+window.onload = () => {
+  cargarMalla();
+  cargarProgreso();
+};
+
+function guardarProgreso() {
+  const aprobados = Array.from(document.querySelectorAll('.ramo.aprobado'))
+    .map(div => div.dataset.id);
+  localStorage.setItem("ramosAprobados", JSON.stringify(aprobados));
+}
+
+function cargarProgreso() {
+  const data = localStorage.getItem("ramosAprobados");
+  if (!data) return;
+  const aprobados = JSON.parse(data);
+  aprobados.forEach(id => {
+    const div = document.querySelector(`.ramo[data-id='${id}']`);
+    if (div) div.classList.add("aprobado");
+  });
+}
