@@ -203,7 +203,7 @@ function actualizarRamos() {
     const div = document.querySelector(`.ramo[data-id='${ramo.id}']`);
     const aprobado = div.classList.contains("aprobado");
 
-    const requisitosCumplidos = ramo.requisitos.every(req => {
+    const requisitosCumplidos = ramo.prerequisitos.every(req => {
       const reqDiv = document.querySelector(`.ramo[data-id='${req}']`);
       return reqDiv && reqDiv.classList.contains("aprobado");
     });
