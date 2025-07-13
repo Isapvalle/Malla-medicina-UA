@@ -35,7 +35,6 @@ h2 {
   padding-bottom: 20px;
 }
 
-/* Estilo para cada bloque de semestre */
 .bloque-semestre {
   background-color: #ffffff;
   border-radius: 16px;
@@ -44,7 +43,6 @@ h2 {
   box-shadow: 0 6px 16px rgba(252, 105, 152, 0.15);
 }
 
-/* Estilo base de cada ramo */
 .ramo {
   background-color: #ffe4ec;
   padding: 15px;
@@ -56,7 +54,6 @@ h2 {
   box-shadow: 0 3px 6px rgba(0, 0, 0, 0.05);
 }
 
-/* Cuando el ramo se activa (prerrequisitos cumplidos) */
 .ramo.activo {
   background-color: #ffc1d5;
   cursor: pointer;
@@ -68,7 +65,6 @@ h2 {
   box-shadow: 0 6px 12px rgba(252, 105, 152, 0.15);
 }
 
-/* Cuando el ramo está aprobado */
 .ramo.aprobado {
   background-color: #fc6998;
   text-decoration: line-through;
@@ -76,7 +72,6 @@ h2 {
   font-weight: bold;
 }
 
-/* Botones */
 button {
   font-family: 'Poppins', sans-serif;
   background-color: #fc6998;
@@ -111,6 +106,31 @@ button:hover {
   background-color: #fc6998;
   border-radius: 10px;
   transition: width 0.4s ease-in-out;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+#porcentaje-texto {
+  position: absolute;
+  color: white;
+  font-weight: bold;
+  font-size: 12px;
+  z-index: 1;
+  pointer-events: none;
+}
+
+/* Scrollbar aesthetic (opcional) */
+.malla-container::-webkit-scrollbar {
+  height: 8px;
+}
+.malla-container::-webkit-scrollbar-thumb {
+  background: #fc6998;
+  border-radius: 4px;
+}
+.malla-container::-webkit-scrollbar-track {
+  background: #ffe4ec;
 }
 
 /* Modo oscuro */
@@ -149,6 +169,10 @@ body.oscuro #barra-progreso-container {
 
 body.oscuro #barra-progreso {
   background-color: #ffc1d5;
+}
+
+body.oscuro #porcentaje-texto {
+  color: #1c1c1e;
 }
 
 body.oscuro button {
