@@ -221,6 +221,7 @@ function actualizarRamos() {
 
   const progreso = Math.round((aprobadosCount / todosLosRamos.length) * 100);
   document.getElementById("barra-progreso").style.width = progreso + "%";
+  document.getElementById("porcentaje-texto").innerText = progreso + "%";
 }
 
 function reiniciarMalla() {
