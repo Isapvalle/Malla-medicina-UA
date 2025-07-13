@@ -163,12 +163,12 @@ function crearTitulo(semestre) {
   const h2 = document.createElement("h2");
   h2.innerText = semestre;
   h2.style.marginTop = "30px";
-  h2.style.color = "#fc6998";
+  h2.style.color = "#fc6998"; // color del título
 
   bloque.appendChild(h2);
   malla.appendChild(bloque);
 
-  return bloque; // 👈 lo necesitamos para meter los ramos dentro
+  return bloque;
 }
 
 function crearRamo(ramo, contenedor) {
@@ -183,8 +183,8 @@ function crearRamo(ramo, contenedor) {
 function cargarMalla() {
   malla.innerHTML = "";
   for (const [semestre, ramos] of Object.entries(ramosPorSemestre)) {
-    const contenedor = crearTitulo(semestre); // 💡 ahora devuelve el bloque
-    ramos.forEach(ramo => crearRamo(ramo, contenedor)); // y aquí van los ramos
+    const contenedor = crearTitulo(semestre); // ✅ guardar el contenedor
+    ramos.forEach(ramo => crearRamo(ramo, contenedor)); // ✅ usar el contenedor
   }
   actualizarRamos();
 }
