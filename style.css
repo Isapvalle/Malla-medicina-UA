@@ -84,3 +84,51 @@ h2 {
   background-color: #fc6998;
   color: white;
 }
+
+.bloque-semestre {
+  background-color: #ffffff;
+  border-radius: 16px;
+  padding: 20px;
+  width: 300px;
+  box-shadow: 0 6px 16px rgba(252, 105, 152, 0.15);
+}
+
+body.oscuro {
+  background: #1e1e2f;
+  color: white;
+}
+
+body.oscuro .ramo {
+  background-color: #2c2c3c;
+  color: white;
+}
+
+body.oscuro .ramo.activo {
+  background-color: #3a4a6d;
+}
+
+body.oscuro .ramo.aprobado {
+  background-color: #00569D;
+}
+
+body.oscuro h1,
+body.oscuro h2 {
+  color: #90B1DB;
+}
+
+#modo-btn {
+  margin-bottom: 20px;
+  padding: 8px 16px;
+  border-radius: 8px;
+  border: none;
+  cursor: pointer;
+  background-color: #90B1DB;
+  color: white;
+  font-weight: bold;
+}
+
+body.oscuro #modo-btn {
+  background-color: #f0f0f0;
+  color: black;
+}
+
