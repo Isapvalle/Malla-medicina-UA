@@ -163,7 +163,7 @@ function crearTitulo(semestre) {
   const h2 = document.createElement("h2");
   h2.innerText = semestre;
   h2.style.marginTop = "30px";
-  h2.style.color = "#fc6998"; // color del título
+  h2.style.color = "#fc6998";
 
   bloque.appendChild(h2);
   malla.appendChild(bloque);
@@ -183,8 +183,8 @@ function crearRamo(ramo, contenedor) {
 function cargarMalla() {
   malla.innerHTML = "";
   for (const [semestre, ramos] of Object.entries(ramosPorSemestre)) {
-    const contenedor = crearTitulo(semestre); // ✅ guardar el contenedor
-    ramos.forEach(ramo => crearRamo(ramo, contenedor)); // ✅ usar el contenedor
+    const contenedor = crearTitulo(semestre);
+    ramos.forEach(ramo => crearRamo(ramo, contenedor));
   }
   actualizarRamos();
 }
@@ -193,8 +193,8 @@ function aprobarRamo(id) {
   const div = document.querySelector(`.ramo[data-id='${id}']`);
   if (!div.classList.contains("activo")) return;
   div.classList.add("aprobado");
-  actualizarRamos();
   guardarProgreso();
+  actualizarRamos();
 }
 
 function actualizarRamos() {
@@ -204,7 +204,7 @@ function actualizarRamos() {
   todosLosRamos.forEach(ramo => {
     const div = document.querySelector(`.ramo[data-id='${ramo.id}']`);
     const aprobado = div.classList.contains("aprobado");
-    const requisitosCumplidos = ramo.prerequisitos.every(req => {
+    const requisitosCumplidos = ramo.requisitos.every(req => {
       const reqDiv = document.querySelector(`.ramo[data-id='${req}']`);
       return reqDiv.classList.contains("aprobado");
     });
@@ -223,24 +223,17 @@ function actualizarRamos() {
   const progreso = Math.round((aprobadosCount / todosLosRamos.length) * 100);
   document.getElementById("barra-progreso").style.width = progreso + "%";
 }
-  });
-}
 
 function reiniciarMalla() {
   document.querySelectorAll(".ramo").forEach(div => {
     div.classList.remove("aprobado");
   });
-  actualizarRamos();
   localStorage.removeItem("ramosAprobados");
+  actualizarRamos();
 }
 
-window.onload = () => {
-  cargarMalla();
-  cargarProgreso();
-};
-
 function guardarProgreso() {
-  const aprobados = Array.from(document.querySelectorAll('.ramo.aprobado'))
+  const aprobados = Array.from(document.querySelectorAll(".ramo.aprobado"))
     .map(div => div.dataset.id);
   localStorage.setItem("ramosAprobados", JSON.stringify(aprobados));
 }
@@ -260,12 +253,11 @@ function alternarModo() {
   localStorage.setItem("modoOscuro", document.body.classList.contains("oscuro"));
 }
 
-// Aplica el modo guardado al cargar
 window.onload = () => {
   cargarMalla();
   cargarProgreso();
   if (localStorage.getItem("modoOscuro") === "true") {
     document.body.classList.add("oscuro");
   }
+  actualizarRamos();
 };
-
