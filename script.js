@@ -130,8 +130,9 @@ function crearRamo(ramo, contenedor) {
   div.dataset.id = ramo.id;
 
   // Nombre del ramo
-  const nombre = document.createElement("div");
+   const nombre = document.createElement("div");
   nombre.innerText = ramo.nombre;
+  nombre.classList.add("nombre-ramo");
   div.appendChild(nombre);
 
   // Créditos
