@@ -67,17 +67,27 @@ h2 {
 
 .ramo.aprobado {
   background-color: #fc6998;
-  text-decoration: line-through;
   color: white;
   font-weight: bold;
 }
 
-.creditos {
-  font-size: 0.8em;
-  color: #555;
-  margin-top: 6px;
+/* ✅ Solo tacha el nombre, no los créditos */
+.ramo.aprobado .nombre-ramo {
+  text-decoration: line-through;
 }
 
+.ramo.aprobado .creditos {
+  text-decoration: none;
+}
+
+/* Créditos */
+.creditos {
+  font-size: 13px;
+  margin-top: 4px;
+  opacity: 0.9;
+}
+
+/* Botones */
 button {
   font-family: 'Poppins', sans-serif;
   background-color: #fc6998;
@@ -169,8 +179,12 @@ body.oscuro .ramo.aprobado {
   color: #1c1c1e;
 }
 
-body.oscuro .creditos {
-  color: #ccc;
+body.oscuro .ramo.aprobado .nombre-ramo {
+  text-decoration: line-through;
+}
+
+body.oscuro .ramo.aprobado .creditos {
+  text-decoration: none;
 }
 
 body.oscuro #barra-progreso-container {
