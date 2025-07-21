@@ -72,6 +72,12 @@ h2 {
   font-weight: bold;
 }
 
+.creditos {
+  font-size: 0.8em;
+  color: #555;
+  margin-top: 6px;
+}
+
 button {
   font-family: 'Poppins', sans-serif;
   background-color: #fc6998;
@@ -121,7 +127,7 @@ button:hover {
   pointer-events: none;
 }
 
-/* Scrollbar aesthetic (opcional) */
+/* Scrollbar aesthetic */
 .malla-container::-webkit-scrollbar {
   height: 8px;
 }
@@ -161,6 +167,10 @@ body.oscuro .ramo.activo {
 body.oscuro .ramo.aprobado {
   background-color: #ffc1d5;
   color: #1c1c1e;
+}
+
+body.oscuro .creditos {
+  color: #ccc;
 }
 
 body.oscuro #barra-progreso-container {
