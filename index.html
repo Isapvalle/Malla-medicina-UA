@@ -12,14 +12,27 @@
   <button onclick="reiniciarMalla()" id="reset-btn">🔁 Reiniciar todo</button>
   <button id="modo-btn" onclick="alternarModo()">🌓 Modo Claro/Oscuro</button>
 
+  <!-- Barra de progreso -->
   <div id="barra-progreso-container">
-  <div id="barra-progreso">
-    <span id="porcentaje-texto">0%</span>
+    <div id="barra-progreso">
+      <span id="porcentaje-texto">0%</span>
+    </div>
   </div>
-</div>
 
+  <!-- Contenedor principal de la malla -->
   <div id="malla" class="malla-container"></div>
 
+  <!-- Script principal -->
   <script src="script.js"></script>
+
+  <!-- Script para mantener el modo oscuro al recargar -->
+  <script>
+    window.onload = () => {
+      const modoOscuro = localStorage.getItem("modoOscuro");
+      if (modoOscuro === "true") {
+        document.body.classList.add("oscuro");
+      }
+    };
+  </script>
 </body>
 </html>
