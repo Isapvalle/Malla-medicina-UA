@@ -25,9 +25,10 @@
   <!-- Script principal -->
   <script src="script.js"></script>
 
-  <!-- Script para mantener el modo oscuro al recargar -->
+  <!-- Solo dejamos UNA función window.onload -->
   <script>
     window.onload = () => {
+      cargarMalla(); // Carga la malla
       const modoOscuro = localStorage.getItem("modoOscuro");
       if (modoOscuro === "true") {
         document.body.classList.add("oscuro");
