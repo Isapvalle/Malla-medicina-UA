@@ -130,7 +130,7 @@ function crearRamo(ramo, contenedor) {
   div.dataset.id = ramo.id;
 
   // Nombre del ramo
-   const nombre = document.createElement("div");
+  const nombre = document.createElement("div");
   nombre.innerText = ramo.nombre;
   nombre.classList.add("nombre-ramo");
   div.appendChild(nombre);
@@ -143,8 +143,41 @@ function crearRamo(ramo, contenedor) {
     div.appendChild(creditos);
   }
 
-  div.onclick = () => aprobarRamo(ramo.id);
+  div.onclick = (e) => {
+    if (div.classList.contains("activo")) {
+      aprobarRamo(ramo.id);
+    } else if (!div.classList.contains("aprobado")) {
+      const faltan = obtenerNombresRamos(ramo.prerequisitos.filter(id => !ramosAprobados.includes(id)));
+      mostrarTooltip(div, faltan);
+      e.stopPropagation();
+    }
+  };
+
   contenedor.appendChild(div);
+}
+
+function mostrarTooltip(ramoElement, mensajes) {
+  const tooltip = document.createElement("div");
+  tooltip.classList.add("tooltip");
+  tooltip.innerHTML = `<strong>Debes aprobar:</strong><ul>${mensajes.map(m => `<li>${m}</li>`).join('')}</ul>`;
+
+  document.body.appendChild(tooltip);
+
+  const rect = ramoElement.getBoundingClientRect();
+  tooltip.style.left = `${rect.left + window.scrollX}px`;
+  tooltip.style.top = `${rect.bottom + window.scrollY + 5}px`;
+
+  setTimeout(() => {
+    tooltip.remove();
+  }, 3000);
+}
+
+function obtenerNombresRamos(ids) {
+  const nombres = [];
+  Object.values(ramosPorSemestre).flat().forEach(r => {
+    if (ids.includes(r.id)) nombres.push(r.nombre);
+  });
+  return nombres;
 }
 
 function cargarMalla() {
