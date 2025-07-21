@@ -33,6 +33,13 @@ h2 {
   padding-bottom: 20px;
 }
 
+.titulo-semestre {
+  font-weight: bold;
+  font-size: 16px;
+  color: #fc6998;
+  margin-bottom: 10px;
+}
+
 .bloque-semestre {
   background-color: #ffffff;
   border-radius: 16px;
@@ -42,7 +49,21 @@ h2 {
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
+
+.bloque-semestre.completo {
+  animation: highlight 0.8s ease-in-out;
+  box-shadow: 0 0 20px #fc6998;
+  transform: scale(1.02);
+}
+
+@keyframes highlight {
+  0% { box-shadow: 0 0 0 rgba(252, 105, 152, 0.0); transform: scale(1); }
+  50% { box-shadow: 0 0 20px rgba(252, 105, 152, 0.7); transform: scale(1.03); }
+  100% { box-shadow: 0 0 0 rgba(252, 105, 152, 0.0); transform: scale(1); }
+}
+
 .ramo {
   background-color: #ffe4ec;
   padding: 15px;
@@ -84,6 +105,12 @@ h2 {
   text-decoration: line-through;
   color: white;
   font-weight: bold;
+}
+
+.ramo.aprobado .creditos {
+  text-decoration: none;
+  color: #fff;
+  font-weight: normal;
 }
 
 button {
@@ -147,14 +174,15 @@ button:hover {
   background: #ffe4ec;
 }
 
-/* Modo oscuro */
+/* 🌙 Modo oscuro */
 body.oscuro {
   background: #1c1c1e;
   color: #f3f3f3;
 }
 
 body.oscuro h1,
-body.oscuro h2 {
+body.oscuro h2,
+body.oscuro .titulo-semestre {
   color: #ffc1d5;
 }
 
@@ -168,16 +196,20 @@ body.oscuro .ramo {
   color: #f3f3f3;
 }
 
-body.oscuro .ramo .creditos {
-  color: #ccc;
-}
-
 body.oscuro .ramo.activo {
   background-color: #606060;
 }
 
+body.oscuro .ramo .creditos {
+  color: #ccc;
+}
+
 body.oscuro .ramo.aprobado div:first-child {
   color: #1c1c1e;
+}
+
+body.oscuro .ramo.aprobado .creditos {
+  color: #e0e0e0;
 }
 
 body.oscuro #barra-progreso-container {
