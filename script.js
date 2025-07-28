@@ -36,12 +36,12 @@ const ramosPorSemestre = {
     { id: 26, nombre: "Farmacología general", creditos: 4, prerequisitos: [19, 22] },
     { id: 27, nombre: "Metodología de la investigación y Bioestadística", creditos: 4, prerequisitos: [17] },
     { id: 28, nombre: "Salud comunitaria y familiar II", creditos: 4, prerequisitos: [23] },
-    { id: 29, nombre: "Medicina interna", creditos: 15, prerequisitos: [19, 20, 21, 22, 24] }
+    { id: 29, nombre: "Medicina interna", creditos: 7,5, prerequisitos: [19, 20, 21, 22, 24] }
   ],
   "Semestre 6": [
     { id: 30, nombre: "Farmacología aplicada a la clínica", creditos: 6, prerequisitos: [26] },
     { id: 31, nombre: "Medicina basada en la evidencia", creditos: 5, prerequisitos: [27] },
-    { id: 32, nombre: "Medicina interna", creditos: 15, prerequisitos: [19, 20, 21, 22, 24] },
+    { id: 32, nombre: "Medicina interna", creditos: 7,5, prerequisitos: [19, 20, 21, 22, 24] },
     { id: 33, nombre: "Electivo de ética", creditos: 3, prerequisitos: [] }
   ],
   "Semestre 7": [
